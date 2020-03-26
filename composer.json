@@ -1,0 +1,37 @@
+{
+    "name": "johnabc/laravel-rbac",
+    "description": "Laravel RBAC",
+    "type": "library",
+    "require": {
+        "php": ">=7.0",
+        "illuminate/support": ">=5.2",
+        "laravel/framework": ">=5.2",
+        "johnabc/laravel-admin": ">0.0.10"
+    },
+    "authors": [
+        {
+            "name": "JohnABC",
+            "email": "suiyongjie2008@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "LaravelRbac\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "LaravelRBAC\\LaravelRBACServiceProvider"
+            ],
+            "aliases": {
+                "LaravelRbac": "LaravelRBAC\\Facades\\LaravelRBAC"
+            }
+        }
+    },
+    "scripts": {
+        "post-package-install": [
+        ]
+    }
+}
