@@ -26,7 +26,7 @@
                 "LaravelRBAC\\LaravelRBACServiceProvider"
             ],
             "aliases": {
-                "LaravelRbac": "LaravelRBAC\\Facades\\LaravelRBAC"
+                "LaravelRBAC": "LaravelRBAC\\Facades\\LaravelRBAC"
             }
         }
     },
