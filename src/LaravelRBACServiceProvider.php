@@ -2,6 +2,7 @@
 
 namespace LaravelRBAC;
 
+use Route;
 use Illuminate\Support\ServiceProvider;
 
 class LaravelRBACServiceProvider extends ServiceProvider
@@ -11,7 +12,13 @@ class LaravelRBACServiceProvider extends ServiceProvider
         $this->registerLaravelRBAC();
 
         $this->publishConfigs();
+        $this->publishViews();
         $this->publishMigrations();
+    }
+
+    public function boot()
+    {
+        $this->bindRoutes();
     }
 
     public function registerLaravelRBAC()
@@ -36,8 +43,20 @@ class LaravelRBACServiceProvider extends ServiceProvider
         $this->mergeConfigFrom($sourceConfigFile, 'laravelrbac');
     }
 
+    protected function publishViews()
+    {
+        $this->loadViewsFrom($this->path('resources' . DIRECTORY_SEPARATOR . 'views'), 'laravelrbac');
+    }
+
     protected function publishMigrations()
     {
         $this->loadMigrationsFrom($this->path('migrations'));
+    }
+
+    protected function bindRoutes()
+    {
+        $controller = config('laravelrbac.controller');
+
+        Route::get('roles', "{$controller}@getRoles");
     }
 }
